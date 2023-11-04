@@ -62,7 +62,7 @@ try:
           regionDict[key] = region.get(key)
       filteredRegions.append(regionDict)
       
-    # ! trim to only first 10 regions
+    # ! FOR DEBUGGING: trim to only first 10 regions
     filteredRegions = filteredRegions[:10]
 
     for region in filteredRegions:
