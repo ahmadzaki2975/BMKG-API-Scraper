@@ -6,6 +6,7 @@
 import requests
 import json
 import csv
+import datetime
 
 # Link BMKG API
 baseUrl = "https://ibnux.github.io/BMKG-importer/"
@@ -15,7 +16,7 @@ import requests
 import json
 
 # Function to get region's weather data
-def getWeatherData (kota ,regionId):
+def getWeatherData (kota ,regionId, inputDate):
   # Get weather data
   weatherUrl = baseUrl + "cuaca/" + regionId + ".json"
   print("Getting data from " + weatherUrl)
@@ -27,6 +28,9 @@ def getWeatherData (kota ,regionId):
     # Check if the request was successful
     weatherData.raise_for_status()
     weatherData = weatherData.json()  # Parse JSON data directly
+    # If the data's jamCuaca does not contain inputDate, remove the sub data
+    weatherData = [data for data in weatherData if data["jamCuaca"].startswith(str(inputDate))]
+    print(weatherData)
     # Append 'kota' attribute to each dictionary in weatherData
     for data in weatherData:
         data["kota"] = kota
@@ -43,6 +47,10 @@ def getWeatherData (kota ,regionId):
   except Exception as err:
     print(f"An error occurred (getWeatherData): {err}")
     return None
+  
+today = datetime.date.today()
+# format today's date to YYYY-MM-DD
+inputDate = today.strftime("%Y-%m-%d")
 
 regionUrl = "https://ibnux.github.io/BMKG-importer/cuaca/wilayah.json"
 try:
@@ -71,7 +79,7 @@ try:
     # Iterate each region and call their respective API    
     weatherData = []
     for region in filteredRegions:
-      tempWeatherData = getWeatherData(region["kota"] ,region["id"])
+      tempWeatherData = getWeatherData(region["kota"] ,region["id"], today)
       if tempWeatherData:
         weatherData.append(tempWeatherData)
         
