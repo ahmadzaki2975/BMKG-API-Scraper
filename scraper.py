@@ -19,7 +19,7 @@ import json
 def getWeatherData (kota ,regionId, inputDate):
   # Get weather data
   weatherUrl = baseUrl + "cuaca/" + regionId + ".json"
-  print("Getting data from " + weatherUrl)
+  print("Getting data from " + kota)
   if(regionId == "0") :
     return None
   
@@ -30,7 +30,7 @@ def getWeatherData (kota ,regionId, inputDate):
     weatherData = weatherData.json()  # Parse JSON data directly
     # If the data's jamCuaca does not contain inputDate, remove the sub data
     weatherData = [data for data in weatherData if data["jamCuaca"].startswith(str(inputDate))]
-    print(weatherData)
+    # print(weatherData)
     # Append 'kota' attribute to each dictionary in weatherData
     for data in weatherData:
         data["kota"] = kota
@@ -71,10 +71,10 @@ try:
       filteredRegions.append(regionDict)
       
     # ! FOR DEBUGGING: trim to only first 10 regions
-    filteredRegions = filteredRegions[:10]
+    # filteredRegions = filteredRegions[:10]
 
-    for region in filteredRegions:
-      print(region)
+    # for region in filteredRegions:
+    #   print(region)
       
     # Iterate each region and call their respective API    
     weatherData = []
@@ -94,12 +94,14 @@ try:
     with open(fileName, "w") as csvFile:
       csvWriter = csv.DictWriter(csvFile, fieldnames=csvHeader)
       csvWriter.writeheader()
+      iter = 0
       for data in weatherData:
           for subData in data:
-            print(subData)
+            # print(subData)
+            iter += 1
             csvWriter.writerow(subData)
             
-    print("Written " + str(len(weatherData)) + " rows to " + fileName)
+    print("Written " + str(iter) + " rows to " + fileName)
 
 except requests.exceptions.HTTPError as http_err:
     print(f"HTTP error occurred: {http_err}")
