@@ -5,39 +5,21 @@ All data is owned and provided by [Badan Meteorologi, Klimatologi, dan Geofisika
 
 ## Example output
 
-| Kota               | Jam Cuaca           | Kode Cuaca      | Cuaca         | Humidity | Temp (C) | Temp (F) |
-|--------------------|---------------------|-----------------|---------------|----------|----------|----------|
-| Banda Aceh         | 2023-11-05 00:00:00 | 1               | Cerah Berawan | 85       | 24       | 75       |
-| Banda Aceh         | 2023-11-05 06:00:00 | 3               | Berawan       | 65       | 31       | 88       |
-| Banda Aceh         | 2023-11-05 12:00:00 | 3               | Berawan       | 80       | 26       | 79       |
-| Banda Aceh         | 2023-11-05 18:00:00 | 1               | Cerah Berawan | 90       | 23       | 73       |
-| Kab. Bireuen       | 2023-11-05 00:00:00 | 1               | Cerah Berawan | 85       | 24       | 75       |
-| Kab. Bireuen       | 2023-11-05 06:00:00 | 60              | Hujan Ringan  | 65       | 31       | 88       |
-| Kab. Bireuen       | 2023-11-05 12:00:00 | 1               | Cerah Berawan | 80       | 26       | 79       |
-| Kab. Bireuen       | 2023-11-05 18:00:00 | 1               | Cerah Berawan | 90       | 23       | 73       |
-| Kab. Gayo Lues     | 2023-11-05 00:00:00 | 1               | Cerah Berawan | 95       | 17       | 63       |
-| Kab. Gayo Lues     | 2023-11-05 06:00:00 | 60              | Hujan Ringan  | 75       | 26       | 79       |
-| Kab. Gayo Lues     | 2023-11-05 12:00:00 | 60              | Hujan Ringan  | 90       | 21       | 70       |
-| Kab. Gayo Lues     | 2023-11-05 18:00:00 | 3               | Berawan       | 95       | 18       | 64       |
-| Kab. Aceh Barat Daya| 2023-11-05 00:00:00 | 1              | Cerah Berawan | 85       | 24       | 75       |
-| Kab. Aceh Barat Daya| 2023-11-05 06:00:00 | 60             | Hujan Ringan  | 65       | 31       | 88       |
-| Kab. Aceh Barat Daya| 2023-11-05 12:00:00 | 95             | Hujan Petir   | 80       | 26       | 79       |
-| Kab. Aceh Barat Daya| 2023-11-05 18:00:00 | 3              | Berawan       | 90       | 23       | 73       |
-| Kab. Aceh Jaya     | 2023-11-05 00:00:00 | 3               | Berawan       | 85       | 24       | 75       |
-| Kab. Aceh Jaya     | 2023-11-05 06:00:00 | 60              | Hujan Ringan  | 65       | 31       | 88       |
-| Kab. Aceh Jaya     | 2023-11-05 12:00:00 | 1               | Cerah Berawan | 80       | 26       | 79       |
-| Kab. Aceh Jaya     | 2023-11-05 18:00:00 | 3               | Berawan       | 90       | 23       | 73       |
-| Kab. Aceh Timur    | 2023-11-05 00:00:00 | 3               | Berawan       | 85       | 24       | 75       |
-| Kab. Aceh Timur    | 2023-11-05 06:00:00 | 1               | Cerah Berawan | 65       | 31       | 88       |
-| Kab. Aceh Timur    | 2023-11-05 12:00:00 | 1               | Cerah Berawan | 80       | 26       | 79       |
-| Kab. Aceh Timur    | 2023-11-05 18:00:00 | 1               | Cerah Berawan | 90       | 23       | 73       |
-| Kab. Aceh Tamiang  | 2023-11-05 00:00:00 | 45              | Berkabut      | 85       | 24       | 75       |
-| Kab. Aceh Tamiang  | 2023-11-05 06:00:00 | 1               | Cerah Berawan | 65       | 31       | 88       |
-| Kab. Aceh Tamiang  | 2023-11-05 12:00:00 | 3               | Berawan       | 80       | 26       | 79       |
-| Kab. Aceh Tamiang  | 2023-11-05 18:00:00 | 0               | Cerah         | 90       | 23       | 73       |
-| Kab. Aceh Besar    | 2023-11-05 00:00:00 | 1               | Cerah Berawan | 85       | 24       | 75       |
-| Kab. Aceh Besar    | 2023-11-05 06:00:00 | 60              | Hujan Ringan  | 65       | 31       | 88       |
-| Kab. Aceh Besar    | 2023-11-05 12:00:00 | 45              | Berkabut      | 80       | 26       | 79       |
-| Kab. Aceh Besar    | 2023-11-05 18:00:00 | 1               | Cerah Berawan | 90       | 23       | 73       |
-| Kab. Aceh Tenggara | 2023-11-05 00:00:00 | 1               | Cerah Berawan | 95       | 17       | 63       |
-| Kab. Aceh Tenggara |
+| id                                | kota           | jamCuaca           | kodeCuaca | cuaca         | humidity | tempC | tempF |
+|-----------------------------------|----------------|--------------------|-----------|---------------|----------|-------|-------|
+| Banda_Aceh_2023-11-13T00:00:00     | Banda Aceh     | 2023-11-13 00:00:00 | 3         | Berawan       | 85       | 25    | 77    |
+| Banda_Aceh_2023-11-13T06:00:00     | Banda Aceh     | 2023-11-13 06:00:00 | 95        | Hujan Petir   | 65       | 31    | 88    |
+| Banda_Aceh_2023-11-13T12:00:00     | Banda Aceh     | 2023-11-13 12:00:00 | 1         | Cerah Berawan | 80       | 26    | 79    |
+| Banda_Aceh_2023-11-13T18:00:00     | Banda Aceh     | 2023-11-13 18:00:00 | 60        | Hujan Ringan  | 90       | 23    | 73    |
+| Bireuen_2023-11-13T00:00:00        | Bireuen        | 2023-11-13 00:00:00 | 1         | Cerah Berawan | 85       | 25    | 77    |
+| Bireuen_2023-11-13T06:00:00        | Bireuen        | 2023-11-13 06:00:00 | 1         | Cerah Berawan | 65       | 31    | 88    |
+| Bireuen_2023-11-13T12:00:00        | Bireuen        | 2023-11-13 12:00:00 | 60        | Hujan Ringan  | 80       | 26    | 79    |
+| Bireuen_2023-11-13T18:00:00        | Bireuen        | 2023-11-13 18:00:00 | 60        | Hujan Ringan  | 90       | 23    | 73    |
+| Gayo_Lues_2023-11-13T00:00:00      | Gayo Lues      | 2023-11-13 00:00:00 | 3         | Berawan       | 95       | 20    | 68    |
+| Gayo_Lues_2023-11-13T06:00:00      | Gayo Lues      | 2023-11-13 06:00:00 | 60        | Hujan Ringan  | 75       | 26    | 79    |
+| Gayo_Lues_2023-11-13T12:00:00      | Gayo Lues      | 2023-11-13 12:00:00 | 60        | Hujan Ringan  | 90       | 21    | 70    |
+| Gayo_Lues_2023-11-13T18:00:00      | Gayo Lues      | 2023-11-13 18:00:00 | 1         | Cerah Berawan | 100      | 18    | 64    |
+| Aceh_Barat_Daya_2023-11-13T00:00:00 | Aceh Barat Daya| 2023-11-13 00:00:00 | 3         | Berawan       | 85       | 25    | 77    |
+| Aceh_Barat_Daya_2023-11-13T06:00:00 | Aceh Barat Daya| 2023-11-13 06:00:00 | 60        | Hujan Ringan  | 65       | 31    | 88    |
+| Aceh_Barat_Daya_2023-11-13T12:00:00 | Aceh Barat Daya| 2023-11-13 12:00:00 | 60        | Hujan Ringan  | 80       | 26    | 79    |
+
