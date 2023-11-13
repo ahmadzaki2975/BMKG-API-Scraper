@@ -8,7 +8,7 @@ import json
 import csv
 import datetime
 
-# Link BMKG API
+# BMKG API Base URL
 baseUrl = "https://ibnux.github.io/BMKG-importer/"
 
 # List of regions
@@ -30,7 +30,6 @@ def getWeatherData (kota ,regionId, inputDate):
     weatherData = weatherData.json()  # Parse JSON data directly
     # If the data's jamCuaca does not contain inputDate, remove the sub data
     weatherData = [data for data in weatherData if data["jamCuaca"].startswith(str(inputDate))]
-    # print(weatherData)
     # Append 'kota' attribute to each dictionary in weatherData
     for data in weatherData:
         data["kota"] = kota
@@ -71,10 +70,7 @@ try:
       filteredRegions.append(regionDict)
       
     # ! FOR DEBUGGING: trim to only first 10 regions
-    # filteredRegions = filteredRegions[:10]
-
-    # for region in filteredRegions:
-    #   print(region)
+    filteredRegions = filteredRegions[:10]
       
     # Iterate each region and call their respective API    
     weatherData = []
@@ -87,17 +83,12 @@ try:
     fileName = "weatherData.csv"
     csvHeader = ["kota", "jamCuaca", "kodeCuaca", "cuaca", "humidity", "tempC", "tempF"]
     
-    # for data in weatherData:
-    #   print(data)
-    #   print("\n")
-    
     with open(fileName, "w") as csvFile:
       csvWriter = csv.DictWriter(csvFile, fieldnames=csvHeader)
       csvWriter.writeheader()
       iter = 0
       for data in weatherData:
           for subData in data:
-            # print(subData)
             iter += 1
             csvWriter.writerow(subData)
             
