@@ -6,7 +6,8 @@
 import requests
 import json
 import csv
-import datetime
+from datetime import datetime
+import datetime as dt
 
 # BMKG API Base URL
 baseUrl = "https://ibnux.github.io/BMKG-importer/"
@@ -23,6 +24,20 @@ def getWeatherData (kota ,regionId, inputDate):
   if(regionId == "0") :
     return None
   
+  def format_id(kota, date):
+    # Remove "Kota " or "Kab. " and replace spaces with underscores
+    cleaned_city_name = kota.replace("Kota ", "").replace("Kab. ", "").replace(" ", "_")
+
+    # Convert the date string to a datetime object
+    date_obj = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+
+    # Format the date as ISO 8601
+    formatted_date = date_obj.isoformat()
+
+    # Concatenate city name and formatted date to create the ID
+    unique_id = f"{cleaned_city_name}_{formatted_date}"
+    return unique_id
+  
   try:
     weatherData = requests.get(weatherUrl)
     # Check if the request was successful
@@ -30,9 +45,11 @@ def getWeatherData (kota ,regionId, inputDate):
     weatherData = weatherData.json()  # Parse JSON data directly
     # If the data's jamCuaca does not contain inputDate, remove the sub data
     weatherData = [data for data in weatherData if data["jamCuaca"].startswith(str(inputDate))]
-    # Append 'kota' attribute to each dictionary in weatherData
+    # Append extra attribute to each dictionary in weatherData
     for data in weatherData:
-        data["kota"] = kota
+        tempKota = kota.replace("Kota ", "").replace("Kab. ", "")
+        data["kota"] = tempKota.strip()
+        data["id"] = format_id(tempKota, data["jamCuaca"])
     return weatherData
   except requests.exceptions.HTTPError as http_err:
     print(f"HTTP error occurred: {http_err}")
@@ -47,7 +64,7 @@ def getWeatherData (kota ,regionId, inputDate):
     print(f"An error occurred (getWeatherData): {err}")
     return None
   
-today = datetime.date.today()
+today = dt.date.today()
 # format today's date to YYYY-MM-DD
 inputDate = today.strftime("%Y-%m-%d")
 
@@ -81,7 +98,7 @@ try:
         
     # Write to CSV  
     fileName = "weatherData.csv"
-    csvHeader = ["kota", "jamCuaca", "kodeCuaca", "cuaca", "humidity", "tempC", "tempF"]
+    csvHeader = ["id", "kota", "jamCuaca", "kodeCuaca", "cuaca", "humidity", "tempC", "tempF"]
     
     with open(fileName, "w") as csvFile:
       csvWriter = csv.DictWriter(csvFile, fieldnames=csvHeader)
