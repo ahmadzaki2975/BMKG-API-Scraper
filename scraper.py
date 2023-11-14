@@ -25,8 +25,8 @@ def getWeatherData (kota ,regionId, inputDate):
     return None
   
   def format_id(kota, date):
-    # Remove "Kota " or "Kab. " and replace spaces with underscores
-    cleaned_city_name = kota.replace("Kota ", "").replace("Kab. ", "").replace(" ", "_")
+    # Remove "Kota " or "Kab. "
+    cleaned_city_name = kota.replace("Kota ", "").replace("Kab. ", "")
 
     # Convert the date string to a datetime object
     date_obj = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
